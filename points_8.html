@@ -99,6 +99,11 @@
     </style>
 </head>
 <body>
+    <!-- Audio element with autoplay -->
+    <audio id="congratsSound" autoplay>
+        <source src="qr_codes/Congratulations clapping and cheering video of applause sound effects with fireworks.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="container">
         <div class="emoji">🎉</div>
         <h1>Congratulations!</h1>
@@ -106,5 +111,27 @@
         <div class="label">points!</div>
         <div class="footer">You got 8 points!</div>
     </div>
+
+    <script>
+        // Try to play sound (browsers may block autoplay)
+        window.addEventListener('load', function() {
+            const audio = document.getElementById('congratsSound');
+            
+            // Try to play
+            const playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    console.log('Sound playing!');
+                }).catch(error => {
+                    // Autoplay was prevented - add click to play
+                    console.log('Click to play sound');
+                    document.body.addEventListener('click', () => {
+                        audio.play();
+                    }, { once: true });
+                });
+            }
+        });
+    </script>
 </body>
 </html>

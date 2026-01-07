@@ -1,10 +1,12 @@
-# QR Code files
-qr_codes/
+# QR Code PNG files only
+qr_codes/*.png
+qr_codes_short/
 logo.png
 
 # Python
 *.pyc
 __pycache__/
+*.py
 
 # Backups
 *.bak
