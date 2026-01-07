@@ -100,7 +100,8 @@
 </head>
 <body>
     <!-- Audio element with autoplay -->
-    <audio id="congratsSound" autoplay>
+    <!-- Preload and autoplay audio -->
+    <audio id="congratsSound" preload="auto" autoplay muted>
         <source src="qr_codes/Congratulations clapping and cheering video of applause sound effects with fireworks.mp3" type="audio/mpeg">
     </audio>
 
@@ -113,25 +114,41 @@
     </div>
 
     <script>
-        // Try to play sound (browsers may block autoplay)
-        window.addEventListener('load', function() {
+        // Immediate sound playback - no delay
+        (function() {
             const audio = document.getElementById('congratsSound');
             
-            // Try to play
-            const playPromise = audio.play();
+            // Unmute and play immediately
+            audio.muted = false;
+            audio.volume = 1.0;
             
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    console.log('Sound playing!');
-                }).catch(error => {
-                    // Autoplay was prevented - add click to play
-                    console.log('Click to play sound');
-                    document.body.addEventListener('click', () => {
-                        audio.play();
-                    }, { once: true });
-                });
+            // Try multiple times to ensure playback
+            function attemptPlay() {
+                const playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        // Success!
+                    }).catch(() => {
+                        // If blocked, play on first user interaction
+                        const playOnInteraction = () => {
+                            audio.play();
+                            document.removeEventListener('click', playOnInteraction);
+                            document.removeEventListener('touchstart', playOnInteraction);
+                        };
+                        document.addEventListener('click', playOnInteraction);
+                        document.addEventListener('touchstart', playOnInteraction);
+                    });
+                }
             }
-        });
+            
+            // Try to play as soon as possible
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', attemptPlay);
+            } else {
+                attemptPlay();
+            }
+        })();
     </script>
 </body>
 </html>
