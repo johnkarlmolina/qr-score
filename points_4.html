@@ -99,12 +99,6 @@
     </style>
 </head>
 <body>
-    <!-- Audio element with autoplay -->
-    <!-- Preload and autoplay audio -->
-    <audio id="congratsSound" preload="auto" autoplay muted>
-        <source src="congrats.mp3" type="audio/mpeg">
-    </audio>
-
     <div class="container">
         <div class="emoji">🎉</div>
         <h1>Congratulations!</h1>
@@ -112,43 +106,5 @@
         <div class="label">points!</div>
         <div class="footer">You got 4 points!</div>
     </div>
-
-    <script>
-        // Immediate sound playback - no delay
-        (function() {
-            const audio = document.getElementById('congratsSound');
-            
-            // Unmute and play immediately
-            audio.muted = false;
-            audio.volume = 1.0;
-            
-            // Try multiple times to ensure playback
-            function attemptPlay() {
-                const playPromise = audio.play();
-                
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        // Success!
-                    }).catch(() => {
-                        // If blocked, play on first user interaction
-                        const playOnInteraction = () => {
-                            audio.play();
-                            document.removeEventListener('click', playOnInteraction);
-                            document.removeEventListener('touchstart', playOnInteraction);
-                        };
-                        document.addEventListener('click', playOnInteraction);
-                        document.addEventListener('touchstart', playOnInteraction);
-                    });
-                }
-            }
-            
-            // Try to play as soon as possible
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', attemptPlay);
-            } else {
-                attemptPlay();
-            }
-        })();
-    </script>
 </body>
 </html>
