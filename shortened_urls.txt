@@ -1,0 +1,24 @@
+# Shortened URLs for QR Codes
+# Format: points=url
+# Example: 1=https://bit.ly/score-1
+
+1=https://johnkarlmolina.github.io/qr-score/points_1.html
+2=https://johnkarlmolina.github.io/qr-score/points_2.html
+3=https://johnkarlmolina.github.io/qr-score/points_3.html
+4=https://johnkarlmolina.github.io/qr-score/points_4.html
+5=https://johnkarlmolina.github.io/qr-score/points_5.html
+6=https://johnkarlmolina.github.io/qr-score/points_6.html
+7=https://johnkarlmolina.github.io/qr-score/points_7.html
+8=https://johnkarlmolina.github.io/qr-score/points_8.html
+9=https://johnkarlmolina.github.io/qr-score/points_9.html
+10=https://johnkarlmolina.github.io/qr-score/points_10.html
+11=https://johnkarlmolina.github.io/qr-score/points_11.html
+12=https://johnkarlmolina.github.io/qr-score/points_12.html
+13=https://johnkarlmolina.github.io/qr-score/points_13.html
+14=https://johnkarlmolina.github.io/qr-score/points_14.html
+15=https://johnkarlmolina.github.io/qr-score/points_15.html
+16=https://johnkarlmolina.github.io/qr-score/points_16.html
+17=https://johnkarlmolina.github.io/qr-score/points_17.html
+18=https://johnkarlmolina.github.io/qr-score/points_18.html
+19=https://johnkarlmolina.github.io/qr-score/points_19.html
+20=https://johnkarlmolina.github.io/qr-score/points_20.html
